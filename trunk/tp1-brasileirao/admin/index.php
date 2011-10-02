@@ -88,7 +88,7 @@
                     <?
                             $acao = $_GET["acao"];
                             if ($acao != "") {
-                                    include "admin/conecta.php";
+                                    include "conecta.php";
                                     $arquivo = $acao.".php";
                                     if (file_exists($arquivo)) {
                                             include $arquivo;
