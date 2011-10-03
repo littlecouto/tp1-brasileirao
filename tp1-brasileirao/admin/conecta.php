@@ -12,7 +12,7 @@
 */
 
 $dbserver  = "localhost";	// Servidor onde está o banco de dados
-$dbname    = "bd01";		// Nome do banco de dados MySQL 
+$dbname    = "tp1_bd";		// Nome do banco de dados MySQL 
 $dbuser    = "usuario";		// Usuario MySQL para conexao 
 $dbpassw   = "usuario";	// Senha do usuario MySQL
 

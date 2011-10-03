@@ -28,7 +28,7 @@
                 border: 1px solid #000000;
             }
             div.conteudo {
-                margin-left: 20%;
+                margin-left: 21%;
             }
             .menu ul {
                 display: block;
@@ -38,35 +38,14 @@
                 display: block;
                 padding: 10 10 10 10;
             }
-            .menu li:hover {
-                background-color: #e1e1e1;
+/*            .menu li {
+                background-color: #e1e1e1;   
+            }*/
+            .menu ul li ul{
+                display:none; 
             }
-            
-            ul.tabela{
-                display: block;
-                padding: 0 0 0 0;
-                width: auto;
-            }
-            ul.colunas {
-                padding: 0 0 0 0;
-                width: auto;
-            }
-            li.linha{
-                padding: 0 0 0 0;
-                width: 100%;
-            }
-            li.coluna{
-                text-align: left;
-                display: inline-block;
-                /*border-style: solid;*/
-                width: 21%;
-                padding: 10 10 10 10;
-            }
-            .odd li.coluna{
-                background-color: #ffffff;
-            }
-            .even li.coluna{
-                background-color: #e1e1e1;
+            .menu ul li:houver{
+                display:block; 
             }
             
          </style>
@@ -79,10 +58,7 @@
         </div>
         <div class="corpo">
             <div class="menu">
-                <ul>
-                        <li><a href="?acao=incluir">Incluir</a></li>
-                        <li><a href="?acao=listar">Listar</a></li>
-                </ul>
+                <? include "opcoes_admin.php"; ?>
             </div>
             <div class="conteudo">
                     <?
