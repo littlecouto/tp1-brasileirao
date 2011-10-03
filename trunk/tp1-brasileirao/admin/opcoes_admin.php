@@ -1,12 +1,19 @@
-<?
-?>
+<? ?>
 <p align="center"><b>Menu</b></p>
 
 <ul>
-	<li>
-            <ul>
-                <li><a href="?acao=incluir">Incluir</a></li>
-            </ul>
-        </li>
-	<li><a href="?acao=listar">Listar</a></li>
+    <li> <p align="center"><b>Incluir</b></p>
+        <ul>
+            <li><a href="?acao=incluir">Incluir</a></li>
+            <li><a href="?acao=incluir">Incluir</a></li>
+            <li><a href="?acao=incluir">Incluir</a></li>
+        </ul>
+    </li>
+    <li> <p align="center"><b>listar</b></p>
+        <ul>        
+            <li><a href="?acao=listar">Listar</a></li>
+            <li><a href="?acao=listar">Listar</a></li>
+            <li><a href="?acao=listar">Listar</a></li>
+        </ul>
+    </li>        
 </ul>

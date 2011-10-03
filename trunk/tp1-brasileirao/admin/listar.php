@@ -1,47 +1,31 @@
 <?
-$sql = "SELECT * FROM cadastroXX ORDER BY nome";
+$sql = "SELECT * FROM time ORDER BY nome";
 $qry = mysql_query($sql) or die(mysql_error());
 
 
 if (mysql_num_rows($qry)>0) {
 	?>
-	<ul class="tabela">
-		<li class="linha even">
-                    <ul class="colunas">
-			<li class="coluna">Mat</li>
-			<li class="coluna">Nome</li>
-			<li class="coluna">Email</li>
-			<li class="coluna">Opções</li>
-                    </ul>    
-		</li>
+	<table cellpadding="1" cellspacing="1">
 		<?
-                $i = 0;
+                $i=0;
 		while ($R=mysql_fetch_object($qry)) {
-			$matricula = $R->matricula;
 			$nome      = $R->nome;
-			$email     = $R->email;
-                        ?>
-                        <?if($i % 2){?>
-                            <li class="linha even" >
-                        <?}else{?>
-                            <li class="linha odd">
-                         <?}?>       
-			
-                            <ul class="colunas">
-				<li class="coluna"><? echo $matricula; ?></li>
-				<li class="coluna"><? echo $nome; ?></li>
-				<li class="coluna"><? echo $email; ?></li>
-				<li class="coluna">
+			$brasao    = $R->brasao;
+                        if(i%2 == 0) $cor = "#ffffff";       
+                         else $cor = "#fefefe";
+                         $i++;
+			?>
+			<tr bgcolor =<?=$cor?>>
+				<td><img src="<?="../img/".$brasao; ?>" alt=""></img><? echo utf8_encode($nome); ?></td>
+				<td align="center" width="10%">
 					[ <a href="?acao=alterar&matricula=<?=$matricula;?>">A</a> ]
 					[ <a href="?acao=excluir&matricula=<?=$matricula;?>">X</a> ]
-				</li>
-                            </ul>
-			</li>
+				</td>
+			</tr>
 			<?
-                        $i++;
 		}
 		?>
-	</ul>
+	</table>
 	<?
 }else{
 	echo "Listagem cancelada (Tabela vazia).";
