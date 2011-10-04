@@ -1,5 +1,4 @@
-<?
-?>
+<? include "verifica.php"; ?> 
 <form name="form_incluir" method="POST" action="?acao=executa_incluir">
 	Matrícula:<br />
 	<input type="text" name="matricula" size="15" maxlength="15"><br />

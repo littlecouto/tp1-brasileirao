@@ -1,4 +1,5 @@
 <?
+	include "verifica.php"; 
 	$matricula = $_GET["matricula"];
 
 	if ($matricula!="") {

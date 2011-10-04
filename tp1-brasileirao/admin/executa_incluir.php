@@ -1,4 +1,5 @@
 <?
+	include "verifica.php";
 	$matricula = $_POST["matricula"];
 	$nome      = $_POST["nome"];
 	$email     = $_POST["email"];
