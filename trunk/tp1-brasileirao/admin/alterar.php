@@ -1,4 +1,5 @@
 <?
+	include "verifica.php";
 	$matricula = $_GET["matricula"];
 	
 	$sql = "SELECT * FROM cadastroXX WHERE matricula='$matricula'";
