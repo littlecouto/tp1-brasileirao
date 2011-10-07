@@ -24,12 +24,12 @@ if (mysql_num_rows($qry)>0) {
 		<?
         $i=0;
 		while ($R=mysql_fetch_object($qry)) {
+			$id				 = $R->id;	
 			$mandante_id     = $R->mandante_id;
 			$visitante_id    = $R->visitante_id;
 			$estadio_id      = $R->estadio_id;
 			$data    		 = $R->data;
-			$ac_pri_tempo    = $R->ac_pri_tempo;
-			$ac_seg_tempo    = $R->ac_seg_tempo;
+			$rodada    		 = $R->rodada;			
                         if($i%2) $cor = "#ffffff";       
                          else $cor = "#f1f1f1";
 			?>
@@ -39,11 +39,10 @@ if (mysql_num_rows($qry)>0) {
 				<td><img src="<?=$imagens[$visitante_id];?>" alt="<?=utf8_encode($times[$mandante_id]);?>" ></img></td>
 				<td><? echo utf8_encode($estadios[$estadio_id]); ?></td>
 				<td><? echo utf8_encode($data); ?></td>
-				<td><? echo utf8_encode($ac_pri_tempo); ?></td>
-				<td><? echo utf8_encode($ac_seg_tempo); ?></td>
+				<td><? echo utf8_encode($rodada); ?></td>
 				<td align="center" width="10%">
-					[ <a href="?acao=alterar&matricula=<?=$matricula;?>">A</a> ]
-					[ <a href="?acao=excluir&matricula=<?=$matricula;?>">X</a> ]
+					[ <a href="?acao=alterar_partida&id=<?=$id;?>">A</a> ]
+					[ <a href="?acao=excluir_partida&id=<?=$id;?>">X</a> ]
 				</td>
 			</tr>
 			<?
