@@ -1317,7 +1317,6 @@ INSERT INTO `time` (`id`, `nome`, `estado`, `brasao`, `gols_pro`, `gols_contra`,
 -- Restrições para a tabela `cartao`
 --
 ALTER TABLE `cartao`
-  ADD CONSTRAINT `cartao_arbitro_fk_constraint` FOREIGN KEY (`arbitro_id`) REFERENCES `arbitro` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `cartao_jogador_fk_constraint` FOREIGN KEY (`jogador_id`) REFERENCES `jogador` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `cartao_partida_fk_constraint` FOREIGN KEY (`partida_id`) REFERENCES `partida` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `cartao_tecnico_fk_constraint` FOREIGN KEY (`tecnico_id`) REFERENCES `tecnico` (`id`) ON UPDATE CASCADE;
