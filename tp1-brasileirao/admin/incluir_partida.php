@@ -15,50 +15,83 @@ $i = 0;
 while ($row = mysql_fetch_array($rs)) {
     $estadio[$i++] = $row;
 }
-
 ?>
 <form name="form_incluir" id="form_incluir" method="POST" action="?acao=executa_incluir_partida">
-    <label>Mandante:
-        <select name="mandante"  id="select_mandante">
-            <?
-            $i = 0;
-            while ($i < count($estadio)) {
-                echo "<option value=\"" . utf8_encode($table[$i]['id']) . "\">" . utf8_encode($table[$i]['nome'] . "-" . $table[$i]['estado']) . "</option>\n  ";
-                $i++;
-            }
-            ?>
-        </select>
-    </label>
-    </br>	
-    <label>Visitante:
-		<select name="visitante">
-            <?
-            $i = 0;
-            while ($i < count($table)) {
-                echo "<option value=\"" .utf8_encode($table[$i]['id']) . "\">" . utf8_encode($table[$i]['nome'] . "-" . $table[$i]['estado']) . "</option>\n  ";
-                $i++;
-            }
-            ?>
-        </select>
-    </label>
-    <br />
-    <label id="label_estadio">Estádio:
-			<select name="estadio">
-				<?
-					$i=0;
-					while($i < count($estadio)){
-						echo "<option value=\"" .utf8_encode($estadio[$i]['id']) . "\">" . utf8_encode($estadio[$i]['nome']). "</option>\n  ";
-						$i++;
-					}
-				?>
-			</select>
-		</label>
-    <br />
-    <label id="label_data">Data (dd/mm/aaaa): <input type="text" name="data" id="data_2" size="10" maxlength="10"></label>
-	<label id="label_hora">Hora (hh:mm): <input type="text" name="hora" id="hora" size="5" maxlength="5"></label>
-	<label id="label_rodada">Rodada: <input type="text" name="rodada" id="rodada" size="5" maxlength="5"></label>
-    <br />
-    <p align="right">
-        <input type="submit" name="Submit" value="Enviar">
-    </p>
+    <table>
+        <tr>   
+
+            <td>
+                Mandante:
+            </td>
+            <td>
+                <select name="mandante"  id="select_mandante">
+                    <?
+                    $i = 0;
+                    while ($i < count($estadio)) {
+                        echo "<option value=\"" . utf8_encode($table[$i]['id']) . "\">" . utf8_encode($table[$i]['nome'] . "-" . $table[$i]['estado']) . "</option>\n  ";
+                        $i++;
+                    }
+                    ?>
+                </select>
+            </td>
+        <tr>
+            <td>
+                Visitante:
+            </td>
+            <td>
+                <select name="visitante">
+                    <?
+                    $i = 0;
+                    while ($i < count($table)) {
+                        echo "<option value=\"" . utf8_encode($table[$i]['id']) . "\">" . utf8_encode($table[$i]['nome'] . "-" . $table[$i]['estado']) . "</option>\n  ";
+                        $i++;
+                    }
+                    ?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Estádio:
+            </td> 
+            <td>
+                <select name="estadio">
+                    <?
+                    $i = 0;
+                    while ($i < count($estadio)) {
+                        echo "<option value=\"" . utf8_encode($estadio[$i]['id']) . "\">" . utf8_encode($estadio[$i]['nome']) . "</option>\n  ";
+                        $i++;
+                    }
+                    ?>
+                </select>
+            </td>
+        </tr>
+        <tr>          
+            <td>
+                Data (dd/mm/aaaa):
+            </td>
+            <td>
+                <input type="text" name="data" id="data_2" size="10" maxlength="10"></label>
+            </td>
+        <tr>           
+            <td>
+                Hora (hh:mm):
+            </td>
+            <td>
+                <input type="text" name="hora" id="hora" size="5" maxlength="5">
+            </td>
+        <tr>
+            <td>    
+                Rodada: 
+            </td>
+            <td>
+                <input type="text" name="rodada" id="rodada" size="5" maxlength="5">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" name="Submit" value="Enviar">
+            </td>
+    </table>    
 </form>

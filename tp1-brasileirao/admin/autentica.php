@@ -9,7 +9,6 @@ $usuario = addslashes($usuario);
 $senha     =   $_POST[senha];
 // DA O MD5 PARA CRIPTOGRAFIA 
 $senha  = md5($senha); 
- 
 //VERIFICAMOS USUÁRIO E SENHA COMPARANDO COM OS DADOS DO BANCO MYSQL
 $sql   =   mysql_query("SELECT ID_USUARIO, NOME_USUARIO FROM tb_usuarios 
 	 WHERE  USUARIO  =  '$usuario' AND SENHA    =  '$senha'") 
