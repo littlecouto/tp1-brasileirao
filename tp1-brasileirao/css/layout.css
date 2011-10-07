@@ -1,0 +1,176 @@
+/*
+-----------------------------------------------
+Grey Box Method - Layout CSS
+----------------------------------------------- */
+
+body {
+  margin:0;
+  padding:0;
+}
+
+
+/* anchors
+----------------------------------------------- */
+a {
+
+}
+a:hover {
+
+}
+
+/* Container background
+----------------------------------------------- */
+.container {
+  width:90%;
+  margin:0 auto;
+  padding:0;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+/*Header configuration
+-------------------------------------------------*/
+#header {
+  width:100%;
+  margin:0 0 -18px 0;
+  z-index:-1000001;
+}
+
+.box_first {
+  position:relative;
+  float:left;
+  margin:10px 10px 10px 9px;
+  padding:10px;
+}
+
+.box {
+  position:relative;
+  float:left;
+  margin:10px 10px 10px 9px;
+  padding:10px;
+  border-left:1px dashed #909774;
+}
+
+/*Content config
+-------------------------------------------------*/
+div#content {
+  position:relative;
+  float:left;
+  width:100%;
+  height:auto;
+}
+
+#content h5 {
+  color:#554400;
+  width:205px;
+  padding: 0 0 5px 0;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid #909774;
+}
+
+#content .rodada a{
+  position:relative;
+  float:left;
+  margin:5px;
+  padding: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background:#fff;
+  text-decoration:none;
+  color:#000;
+}
+
+#content .rodada a:hover{
+  margin:5px;
+  padding: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background:#ffb889;	
+}
+
+#content .rodada .atual {
+  background:#c16a30;
+}
+
+#content .rodada .passada {
+  background: #e1e1e1;
+}
+
+#content .rodadas {
+  position:relative;
+  float:left;
+  width:205px;
+  height:auto;
+  margin:0 0 10px 0;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background: #ff6600;
+}
+
+#content .partida {
+  position:relative;
+  float:left;
+}
+
+.partida input {
+  width:20px;
+  height:30px;
+  border:none;
+  border-bottom: 1px solid #ff6600;
+  font-size:25px;
+  color:#ff6600;
+}
+
+.partida .info {
+  position:relative;
+  float:right;
+}
+
+/*img
+-------------------------------------------------*/
+.partida img {
+  position:relative; 
+  width:35px;
+  height:35px;
+}
+
+img .visitante {
+  position:relative;
+  float:right;
+}
+
+.partida p {
+  display:inline;
+}
+
+
+/*Table
+-------------------------------------------------*/
+table {
+  border:none;
+}
+
+table tr {
+  border-bottom: 1px solid #ff6600;
+}
+/*Bottom
+-------------------------------------------------*/
+#bottom {
+  position:relative;
+  float:left;
+  width:100%;
+  height:30px;
+  background: #22280b;
+  color:#fff;
+  text-align:center;
+  font-weight:bold;
+  margin:0;
+  padding: 1px 0 5px 0;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}

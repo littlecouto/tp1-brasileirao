@@ -55,7 +55,8 @@ while ($row = mysql_fetch_array($rs)) {
 		</label>
     <br />
     <label id="label_data">Data (dd/mm/aaaa): <input type="text" name="data" id="data_2" size="10" maxlength="10"></label>
-	<label id="label_data">Hora (hh:mm): <input type="text" name="hora" id="hora" size="5" maxlength="5"></label>
+	<label id="label_hora">Hora (hh:mm): <input type="text" name="hora" id="hora" size="5" maxlength="5"></label>
+	<label id="label_rodada">Rodada: <input type="text" name="rodada" id="rodada" size="5" maxlength="5"></label>
     <br />
     <p align="right">
         <input type="submit" name="Submit" value="Enviar">
