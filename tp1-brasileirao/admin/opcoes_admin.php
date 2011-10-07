@@ -1,7 +1,7 @@
 <? ?>
 <p align="center"><b>Menu</b></p>
 
-<ul>
+<ul class="nav">
    <li><a href="?acao=incluir_time">Incluir Time</a></li>
    <li><a href="?acao=listar_times">Listar Times</a></li>
    <li><a href="?acao=incluir_jogador">Incluir Jogador</a></li>
