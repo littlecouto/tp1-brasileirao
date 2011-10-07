@@ -157,6 +157,16 @@ table {
 table tr {
   border-bottom: 1px solid #ff6600;
 }
+
+table > tr:first-child {
+  background: #f9f9f9;
+  border-bottom: 1px dashed #ccc;
+  border-top: 2px solid #554400;
+}
+
+table > tr:last-child {
+  border-bottom: 2px dashed #554400 ;
+}
 /*Bottom
 -------------------------------------------------*/
 #bottom {
