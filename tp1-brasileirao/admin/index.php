@@ -1,5 +1,6 @@
 <html>
 <head>
+		<script src="functions.js" type="text/javascript" language="javascript"></script>
         <meta http-equiv="pragma" content="no-cache">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>.: Autenticação Sistema :.</title>
