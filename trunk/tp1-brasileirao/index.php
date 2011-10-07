@@ -1,107 +1,67 @@
-<html>
-<head>
-        <meta http-equiv="pragma" content="no-cache">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>.: Cadastro de Alunos :.</title>
-        <style>
-            div {
-                text-align: center;
-            }
-            ul {
-                list-style: none;
-                padding: 0 0 0 0;
-            }
-            a {
-                text-decoration: none;
-            }
-            div.principal{
-                width: 90%;
-                display: table;
-            }
-            div.corpo{
-                padding: 0 0 0 0;
-            }
-            div.menu {
-                width: 20%;
-                float: left;
-                padding: 0 0 0 0;
-                border: 1px solid #000000;
-            }
-            div.conteudo {
-                margin-left: 20%;
-            }
-            .menu ul {
-                display: block;
-                padding: 0 0 0 0;
-            }
-            .menu li {
-                display: block;
-                padding: 10 10 10 10;
-            }
-            .menu li:hover {
-                background-color: #e1e1e1;
-            }
-            
-            ul.tabela{
-                display: block;
-                padding: 0 0 0 0;
-                width: auto;
-            }
-            ul.colunas {
-                padding: 0 0 0 0;
-                width: auto;
-            }
-            li.linha{
-                padding: 0 0 0 0;
-                width: 100%;
-            }
-            li.coluna{
-                text-align: left;
-                display: inline-block;
-                /*border-style: solid;*/
-                width: 21%;
-                padding: 10 10 10 10;
-            }
-            .odd li.coluna{
-                background-color: #ffffff;
-            }
-            .even li.coluna{
-                background-color: #e1e1e1;
-            }
-            
-         </style>
-</head>
-<body>
-<center>    
-<div class="principal">
-	<div class="banner">
-            <h1><b>Cadastro de Alunos</b></h1>
-        </div>
-        <div class="corpo">
-            <div class="menu">
-                <ul>
-                        <li><a href="?acao=incluir">Incluir</a></li>
-                        <li><a href="?acao=listar">Listar</a></li>
-                </ul>
-            </div>
-            <div class="conteudo">
-                    <?
-                            $acao = $_GET["acao"];
-                            if ($acao != "") {
-                                    include "admin/conecta.php";
-                                    $arquivo = $acao.".php";
-                                    if (file_exists($arquivo)) {
-                                            include $arquivo;
-                                    }else{
-                                            echo "Arquivo não encontrado.";
-                                    }
-                            }else{
-                                    include "boasvindas.php";
-                            }
-                    ?>
-            </div>
-       </div>     
-</div>
-</center>    
-</body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	  
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	  <title>Bola na Rede :: Sistema de Informações</title>
+	  <link rel="stylesheet" type="text/css" href="css/text.css" media="screen" />
+	  <link rel="stylesheet" type="text/css" href="css/layout.css" media="screen" />
+	  <link rel="stylesheet" type="text/css" href="css/nav.css" media="screen" />
+	  <script src="jquery/jquery-1.4.1.min.js" language="javascript"></script>
+	  <script language="javascript">
+/*
+		  $(document).ready(function(){
+			  $("a").each(function(){
+				  $(this).click(function(){
+					  if($(this).attr("href")!="#" && $(this).attr("target")=="" && $(this).attr("id")!="map"){ 
+						  return carregaAjaxPagina($(this).attr("href"));
+					  }
+				  });
+			  });
+			  ;
+		  });
+		  function carregaAjaxPagina(pagina){
+			  $('#content').load(pagina);
+			  return false;
+		  }
+*/
+	  </script>
+	</head>
+	
+	<body>
+		<div class="container">
+
+			<div id="header">
+			  <img src="img/logo.png" alt="Logo Bola na Rede"/>
+			</div><!--End Header-->
+
+
+			<div class="main_menu">
+				<ul class="nav">
+					<li><a href="partidas.html">Classificação e Simulações</a></li>
+					<li><a href="#">Equipes e Jogadores</a></li>
+					<li class="secondary"><a href="#">Sair</a></li>
+				</ul>
+			</div><!--End Main Menu-->
+
+			<div id="content">
+				<?
+					$acao = $_GET["acao"];
+					if ($acao != "") {
+							include "admin/conecta.php";
+							$arquivo = $acao.".php";
+							if (file_exists($arquivo)) {
+									include $arquivo;
+							}else{
+									echo "Arquivo não encontrado.";
+							}
+					}else{
+							include "boasvindas.php";
+					}
+				?>
+			</div><!--End content-->
+
+		  <div id="bottom"><p>Sistema criado por Isac Sandin e Luiz Oliveira</p></div>
+		</div><!--End container-->
+	</body>
 </html>
