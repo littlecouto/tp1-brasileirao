@@ -38,9 +38,12 @@
 
 			<div class="main_menu">
 				<ul class="nav">
-                                        <li><a href="?acao=tabela_campeonato">Classificação e Simulações</a></li>
-					<li><a href="#">Classificação e Simulações</a></li>
-					<li><a href="#">Equipes e Jogadores</a></li>
+                                        <li><a href="?acao=tabela_campeonato">Tabela</a></li>
+                                        <li><a href="?acao=estatisticas">Estatísticas</a></li>
+                                        <li><a href="?acao=simulador">Simulador de Jogos</a></li>
+					<li><a href="?acao=times">Equipes e Jogadores</a></li>
+                                        <li><a href="admin">Admin</a></li>
+
 				</ul>
 			</div><!--End Main Menu-->
 

@@ -90,6 +90,20 @@ if (mysql_num_rows($qry) > 0) {
     <label id="label_hora">Hora (hh:mm): <input type="text" name="hora" id="hora" size="5" maxlength="5" value="<? echo utf8_encode($hora); ?>"></label>
     <label id="label_rodada">Rodada: <input type="text" name="rodada" id="rodada" size="5" maxlength="5" value="<? echo utf8_encode($rodada); ?>"></label>
     <input type="hidden" name="id" value="<?echo $id;?>">
+    
+    
+    <table id='tabela' border='0' width='100%'>
+        <tr style='background-color:#FBF6F7'>
+            <td> &nbsp;</td>
+            <td>Coluna um</td>
+            <td>Coluna dois</td>
+            <td>Coluna tres</td>
+        </tr>
+    </table>
+<br />
+<input type='button' id='incluir' value='incluir' onclick='adiciona()'/>
+    
+    
     <p align="right">
         <input type="submit" name="Submit" value="Alterar">
 </form>
