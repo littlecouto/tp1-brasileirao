@@ -1,14 +1,17 @@
 <?
 	include "verifica.php";
-	$matricula = $_POST["matricula"];
-	$nome      = $_POST["nome"];
-	$email     = $_POST["email"];
+	$nome = $_POST["nome"];
 
-	if ($matricula!="" && $nome!="" && $email!="") {
+	if ($nome !="") {
+		$sql = "INSERT INTO estadio (nome) values ('$nome')";
+		if(mysql_query($sql)){
+		echo "Inclusão feita com sucesso. Clique <a href='?acao=listar_estadios'>aqui</a>.";
+                }
+                else{
+                     echo mysql_error();   
+                     echo "Este estádio já está cadastrado. Clique <a href='?acao=incluir_estadio'>aqui</a> para tenter novamente";
 
-		$sql = "INSERT INTO cadastroXX (matricula,nome,email) values ('$matricula','$nome','$email')";
-		mysql_query($sql) or die(mysql_error());
-		echo "Inclusão feita com sucesso. Clique <a href='?acao=listar'>aqui</a>.";
+                }
 
 	}else{
 

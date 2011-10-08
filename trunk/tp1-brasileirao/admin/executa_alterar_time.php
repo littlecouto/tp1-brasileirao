@@ -15,13 +15,6 @@ if ($id != "" && $nome != "" && $brasao != "" && $estado != "" && $tecnico_id !=
     mysql_query($sql) or die(mysql_error());
     echo "Alteração feita com sucesso. Clique <a href='?acao=listar_times'>aqui</a>.";
 } else {
-
-    echo $id."<br/>";
-    echo $nome."<br/>";
-    echo $brasao."<br/>";
-    echo $estado."<br/>";
-    echo $tecnico_id."<br/>";
-
     echo "Alteração cancelada.";
 }
 ?>

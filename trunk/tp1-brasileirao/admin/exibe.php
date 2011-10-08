@@ -89,7 +89,7 @@
                     <li><a href="?acao=incluir_partida">I Partida</a></li>
                     <li><a href="?acao=listar_partidas">L Partidas</a></li>
                     <li><a href="?acao=incluir_estadio">I Estádio</a></li>
-                    <li><a href="?acao=listarestadios">L Estádios</a></li>         
+                    <li><a href="?acao=listar_estadios">L Estádios</a></li>         
                     <li><a href="?acao=logout">Logout</a></li>
                 </ul>
             </div><!--End Main Menu-->
