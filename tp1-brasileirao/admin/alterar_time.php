@@ -6,6 +6,7 @@ $sql = "SELECT * FROM time where id='$id' ORDER BY nome";
 $qry = mysql_query($sql) or die(mysql_error());
 
 if (mysql_num_rows($qry) > 0) {
+    $R=mysql_fetch_object($qry);
     $nome = $R->nome;
     $brasao = $R->brasao;
     $estado = $R->estado;
