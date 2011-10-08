@@ -43,13 +43,28 @@
             </div><!--End Header-->
 
 
-            <div class="main_menu">
-                <ul class="nav">
-                    <li><a href="?acao=incluir_time">I Time</a></li>
-                    <li><a href="?acao=listar_times">L Times</a></li>
-                    <li><a href="?acao=incluir_jogador">I Jogador</a></li>
-                    <li><a href="?acao=listar_jogadores">L Jogadores</a></li>
-                    <li><a href="?acao=incluir_tecnico">I Técnico</a></li>
+            <div class="menu">
+                <ul class="nav main">
+                    <li> <a href="#">Time</a>
+                        <ul>
+                            <li><a href="?acao=incluir_time">Inserir</a></li>
+                            <li><a href="?acao=listar_time">Listar</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Jogador</a>
+                        <ul>
+                            <li><a href="?acao=incluir_jogador">Inserir</a></li>
+                            <li><a href="?acao=listar_jogador">Listar</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Técnico</a>
+                        <ul>
+                            <li><a href="?acao=incluir_tecnico">Inserir</a></li>
+                            <li><a href="?acao=listar_tecnico">Inserir</a></li>
+                        </ul>
+                    </li>
                     <li><a href="?acao=listar_tecnicos">L Técnicos</a></li>
                     <li><a href="?acao=incluir_partida">I Partida</a></li>
                     <li><a href="?acao=listar_partidas">L Partidas</a></li>
