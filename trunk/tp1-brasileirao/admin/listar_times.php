@@ -17,8 +17,8 @@ if (mysql_num_rows($qry)>0) {
 			$gols_contra = $R->gols_contra;
 			$total_faltas = $R->total_faltas;
 			$estadio_id = $R->estadio_id; 
-            if($i%2) $cor = "#ffffff";       
-            else $cor = "#f1f1f1";
+                        if($i%2) $cor = "#ffffff";       
+                        else $cor = "#f1f1f1";
 			?>
 			<tr bgcolor="<?=$cor?>">
 				<td><img src="<?="../img/".$brasao; ?>" alt="kkk"></img></td>
