@@ -38,9 +38,9 @@
 
 			<div class="main_menu">
 				<ul class="nav">
-					<li><a href="partidas.html">Classificação e Simulações</a></li>
+                                        <li><a href="?acao=tabela_campeonato">Classificação e Simulações</a></li>
+					<li><a href="#">Classificação e Simulações</a></li>
 					<li><a href="#">Equipes e Jogadores</a></li>
-					<li class="secondary"><a href="#">Sair</a></li>
 				</ul>
 			</div><!--End Main Menu-->
 
@@ -56,7 +56,7 @@
 									echo "Arquivo não encontrado.";
 							}
 					}else{
-							include "boasvindas.php";
+							include "tabela_campeonato.php";
 					}
 				?>
 			</div><!--End content-->
