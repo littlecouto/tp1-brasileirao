@@ -2,7 +2,7 @@
 include "verifica.php";
 
 $id = $_GET["id"];
-$sql = "SELECT * FROM time ORDER BY nome where id='$id'";
+$sql = "SELECT * FROM time where id='$id' ORDER BY nome";
 $qry = mysql_query($sql) or die(mysql_error());
 
 if (mysql_num_rows($qry) > 0) {
@@ -34,7 +34,7 @@ if (mysql_num_rows($qry) > 0) {
                 Nome:
             </td>
             <td>
-                <input type="text" name="nome" id="nome" size="50" maxlength="50" value="<?= $nome; ?>">
+                <input type="text" name="nome" id="nome" size="50" maxlength="50" value="<?=$nome;?>">
             </td>
         <tr>
             <td>
