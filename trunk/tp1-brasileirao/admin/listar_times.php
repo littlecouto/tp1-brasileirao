@@ -9,6 +9,7 @@ if (mysql_num_rows($qry)>0) {
 		<?
         $i=0;
 		while ($R=mysql_fetch_object($qry)) {
+                        $id        = $R->id;  
 			$nome      = $R->nome;
 			$brasao    = $R->brasao;
 			$estado    = $R->estado;
@@ -28,8 +29,8 @@ if (mysql_num_rows($qry)>0) {
 				<td><? echo $total_faltas; ?></td>
 				<td><? echo $estadio_id; ?></td>
 				<td align="center" width="10%">
-					[ <a href="?acao=alterar&matricula=<?=$matricula;?>">A</a> ]
-					[ <a href="?acao=excluir&matricula=<?=$matricula;?>">X</a> ]
+					[ <a href="?acao=alterar_time&id=<?=$id;?>">A</a> ]
+					[ <a href="?acao=excluir_time&id=<?=$id;?>">X</a> ]
 				</td>
 			</tr>
 			<?
