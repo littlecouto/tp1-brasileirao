@@ -21,7 +21,7 @@ $sql = "SELECT concat(nome,'-',estado) as nome,
         gols_contra as GC,
         gols_pro-gols_contra as SG,
         IF((vitorias+empates+derrotas),(vitorias*3+empates)/((vitorias+empates+derrotas)*3)*100,0) as aprv FROM time
-        order by P";
+        order by P desc";
 $qry = mysql_query($sql) or die(mysql_error());
 
 
