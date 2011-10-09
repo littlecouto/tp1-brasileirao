@@ -34,5 +34,5 @@
             <li><a href="?acao=listar_estadios">Listar</a></li> 
         </ul>
     </li>                     
-    <li><a href="?acao=logout">Logout</a></li>
+    <li class="secondary"><a href="?acao=logout">Logout</a></li>
 </ul>

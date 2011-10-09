@@ -43,8 +43,13 @@
             </div><!--End Header-->
 
 
-            <div class="menu">
-                    <?include "opcoes_admin.php";?>
+            <div class="main_menu">
+                			<ul class="nav main">
+                                        <li><a href="..?acao=tabela_campeonato">Tabela</a></li>
+                                        <li><a href="..?acao=estatisticas">Estatísticas</a></li>
+                                        <li><a href="..?acao=simulador">Simulador de Jogos</a></li>
+					<li><a href="..?acao=times">Equipes e Jogadores</a></li>
+				</ul>
             </div><!--End Main Menu-->
 
             <div id="content">				
