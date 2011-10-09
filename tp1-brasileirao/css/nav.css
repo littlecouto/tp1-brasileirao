@@ -12,10 +12,14 @@ ul.nav {
   background:#ff6600;
   max-width:100%;
   height:2.5em;
+  text-align: center;
+    border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
   }
 ul.nav li {
+    float:left;
 	cursor:pointer;
-	float:left;
 	text-align:center;
 	list-style-type:none;
 	font-weight:normal;
@@ -109,17 +113,17 @@ ul.main li ul li a {
   height:2em;
   text-align:left;
   color:#22280b;
-  border-top:1px solid #444;
+  border-top:1px solid #666;
   background:#22280b;
 }
 ul.main li a:focus {color:#22280b; background:#ff6600;}
 ul.main li ul li a:hover {
   color:#22280b;
-  background:#ff6600;
+  background:#74662e;
 }
 ul.main li:hover a {
-  color:#22280b;
-  background:#ff6600;
+  color:#ff6600;
+  background:#22280b;
 }
 ul.main li:hover ul li a {color:#ff6600;}
 ul.main li:hover ul li a:hover {color:#22280b; background:#ff6600;}
