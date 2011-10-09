@@ -41,12 +41,11 @@
             </div><!--End Header-->
 
 
-            <div class="main_menu">
+            <div class="menu">
                <?include "opcoes_admin.php";?>
             </div><!--End Main Menu-->
 
             <div id="content">
-                <center>
                 <?
                     $acao = $_GET["acao"];
                     if ($acao != "") {

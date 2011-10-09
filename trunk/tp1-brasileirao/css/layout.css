@@ -35,7 +35,7 @@ a:hover {
     width:100%;
     margin:0;
     padding: 0;
-      border-radius: 5px;
+   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
 }
@@ -52,7 +52,7 @@ a:hover {
   float:left;
   margin:10px 10px 10px 9px;
   padding:10px;
-  max-width: 50%;
+  max-width: 30%;
 }
 
 .box {
@@ -61,7 +61,7 @@ a:hover {
   margin:10px 10px 10px 9px;
   padding:10px;
   border-left:1px dashed #909774;
-  max-width: 50%;
+  max-width: 30%;
 }
 
 /*Content config
@@ -203,8 +203,5 @@ table tr:ultima {
   text-align:center;
   font-weight:bold;
   margin:0;
-  padding: 1px 0 5px 0;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
+  padding: 0 0 6px 0;
 }
