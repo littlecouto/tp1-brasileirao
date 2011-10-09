@@ -1,20 +1,38 @@
 <? ?>
-<p align="center"><b>Menu</b></p>
-
-<ul class="nav">
-   <li><a href="?acao=incluir_time">Incluir Time</a></li>
-   <li><a href="?acao=listar_times">Listar Times</a></li>
-   <li><a href="?acao=incluir_jogador">Incluir Jogador</a></li>
-   <li><a href="?acao=listar_jogadores">Listar Jogadores</a></li>
-   <li><a href="?acao=incluir_arbitro">Incluir Árbitro</a></li>
-   <li><a href="?acao=listar_arbitros">Listar Árbitros</a></li>
-   <li><a href="?acao=incluir_tecnico">Incluir Técnico</a></li>
-   <li><a href="?acao=listar_tecnicos">Listar Técnicos</a></li>
-   <li><a href="?acao=incluir_partida">Incluir Partida</a></li>
-   <li><a href="?acao=listar_partidas">Listar Partidas</a></li>
-   <li><a href="?acao=incluir_estadio">Incluir Estádio</a></li>
-   <li><a href="?acao=listarestadios">Listar Estádios</a></li>
-   <li><a href="?acao=incluir_time">Incluir Times</a></li>
-   <li><a href="?acao=listar_time">Listar Times</a></li>            
-   <li><a href="?acao=logout">Logout</a></li>
+<ul class="nav main">
+    <li> <a href="#">Time</a>
+        <ul>
+            <li><a href="?acao=incluir_time">Inserir</a></li>
+            <li><a href="?acao=listar_times">Listar</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">Jogador</a>
+        <ul>
+            <li><a href="?acao=incluir_jogador">Inserir</a></li>
+            <li><a href="?acao=listar_jogadores">Listar</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">Técnico</a>
+        <ul>
+            <li><a href="?acao=incluir_tecnico">Inserir</a></li>
+            <li><a href="?acao=listar_tecnicos">Listar</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">Partida</a>
+        <ul>
+            <li><a href="?acao=incluir_partida">Inserir</a></li>
+            <li><a href="?acao=listar_partidas">Listar</a></li>
+        </ul>
+    </li> 
+    <li>
+        <a href="#">Estádios</a>
+        <ul>                    
+            <li><a href="?acao=incluir_estadio">Inserir</a></li>
+            <li><a href="?acao=listar_estadios">Listar</a></li> 
+        </ul>
+    </li>                     
+    <li><a href="?acao=logout">Logout</a></li>
 </ul>

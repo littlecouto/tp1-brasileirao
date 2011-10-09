@@ -44,34 +44,7 @@
 
 
             <div class="menu">
-                <ul class="nav main">
-                    <li> <a href="#">Time</a>
-                        <ul>
-                            <li><a href="?acao=incluir_time">Inserir</a></li>
-                            <li><a href="?acao=listar_time">Listar</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Jogador</a>
-                        <ul>
-                            <li><a href="?acao=incluir_jogador">Inserir</a></li>
-                            <li><a href="?acao=listar_jogador">Listar</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Técnico</a>
-                        <ul>
-                            <li><a href="?acao=incluir_tecnico">Inserir</a></li>
-                            <li><a href="?acao=listar_tecnico">Inserir</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="?acao=listar_tecnicos">L Técnicos</a></li>
-                    <li><a href="?acao=incluir_partida">I Partida</a></li>
-                    <li><a href="?acao=listar_partidas">L Partidas</a></li>
-                    <li><a href="?acao=incluir_estadio">I Estádio</a></li>
-                    <li><a href="?acao=listarestadios">L Estádios</a></li>         
-                    <li><a href="?acao=logout">Logout</a></li>
-                </ul>
+                    <?include "opcoes_admin.php";?>
             </div><!--End Main Menu-->
 
             <div id="content">				

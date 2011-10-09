@@ -43,6 +43,7 @@ if (mysql_num_rows($qry)>0) {
 				<td align="center" width="10%">
 					[ <a href="?acao=alterar_partida&id=<?=$id;?>">A</a> ]
 					[ <a href="?acao=excluir_partida&id=<?=$id;?>">X</a> ]
+                                        [ <a href="?acao=adicionar_detalhes_partida&id=<?=$id;?>">D</a> ]
 				</td>
 			</tr>
 			<?
