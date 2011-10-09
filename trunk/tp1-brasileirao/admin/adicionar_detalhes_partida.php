@@ -1,7 +1,8 @@
 <?
 include "verifica.php";
 
-$id = $_GET["id"];
+//$id = $_GET["id"];
+$id = 10;
 $sql = "SELECT * FROM partida WHERE id='$id'";
 $qry = mysql_query($sql) or die(mysql_error());
 
@@ -16,134 +17,263 @@ if (mysql_num_rows($qry) > 0) {
     $data = $data_hora[0];
     $hora = $data_hora[1];
 
-    $sql = "SELECT id,nome,estado FROM time ORDER BY time.nome";
+    $sql = "SELECT jogador.id,jogador.nome,time.id as time_id FROM `time` inner join jogador where jogador.time_id=time.id and time.id='$mandante_id' order by time.nome";
     $rs = mysql_query($sql) or die(mysql_error());
-    $table = array();
+    $jogadores_mandante = array();
     $i = 0;
     while ($row = mysql_fetch_array($rs)) {
-        $table[$i++] = $row;
+        $jogadores_mandante[$i++] = $row;
     }
 
-    $sql = "SELECT id,nome FROM estadio ORDER BY nome";
+    $sql = "SELECT jogador.id,jogador.nome,time.id as time_id FROM `time` inner join jogador where jogador.time_id=time.id and time.id='$visitante_id' order by time.nome";
     $rs = mysql_query($sql) or die(mysql_error());
-    $estadio = array();
+    $jogadores_visitante = array();
     $i = 0;
     while ($row = mysql_fetch_array($rs)) {
-        $estadio[$i++] = $row;
+        $jogadores_visitante[$i++] = $row;
     }
 } else {
     echo "Tabela sem registros.";
     die();
 }
 ?>
-<form name="form_alterar" method="POST" action="?acao=especificar_detalhes_partida">
+<script type="text/javascript">
+    totals_1 =-1;
+    totals_2 =-1;
+    totals_3 =-1;
+    totals_4 =-1;
+    totals_5 = -1;
+function adiciona(tabela){
+    tbl = document.getElementById(tabela)
+ 
+    if (tabela == "tabela_gols_mandante"){
+    totals_1++;    
+    var novaLinha = tbl.insertRow(-1);
+    var novaCelula;
+ 
+    if(totals_1%2==0) cl = "#F5E9EC";
+    else cl = "#FBF6F7";
+    
+    novaCelula = novaLinha.insertCell(0);
+    novaCelula.style.backgroundColor = cl
+    novaCelula.innerHTML = <? echo "\"<select name='\"+tabela+totals_1+\"_jogador_id'>\"+\n";
+    $i = 0;
+    while ($i < count($jogadores_mandante)) {
+        echo "\"<option value='".utf8_encode($jogadores_mandante[$i]['id'])."'>".utf8_encode($jogadores_mandante[$i]['nome'])."</option>\"+\n";
+        $i++;
+        }
+    echo "\"</select>\";";?>
+ 
+    novaCelula = novaLinha.insertCell(1);
+    novaCelula.align = "left";
+    novaCelula.style.backgroundColor = cl;
+    novaCelula.innerHTML = <?echo "\"<select name='\"+tabela+totals_1+\"_tempo_id'>\"+";
+                        $j = 0;
+                        while ($j < 90) {
+                            echo "\"<option value='". utf8_encode($j)."'>".utf8_encode($j) ."</option>\"+\n";
+                            $j++;
+                        }
+                    echo "\" </select>\"";?>
+ 
+    }
+    if (tabela == "tabela_gols_visitante"){
+    totals_2++;    
+    var novaLinha = tbl.insertRow(-1);
+    var novaCelula;
+ 
+    if(totals_2%2==0) cl = "#F5E9EC";
+    else cl = "#FBF6F7";
+    
+    novaCelula = novaLinha.insertCell(0);
+    novaCelula.style.backgroundColor = cl
+    novaCelula.innerHTML = <? echo "\"<select name='\"+tabela+totals_2+\"_jogador_id'>\"+\n";
+    $i = 0;
+    while ($i < count($jogadores_visitante)) {
+        echo "\"<option value='".utf8_encode($jogadores_visitante[$i]['id'])."'>".utf8_encode($jogadores_visitante[$i]['nome'])."</option>\"+\n";
+        $i++;
+        }
+    echo "\"</select>\";";?>
+ 
+    novaCelula = novaLinha.insertCell(1);
+    novaCelula.align = "left";
+    novaCelula.style.backgroundColor = cl;
+    novaCelula.innerHTML = <?echo "\"<select name='\"+tabela+totals_2+\"_tempo_id'>\"+";
+                        $j = 0;
+                        while ($j < 90) {
+                            echo "\"<option value='". utf8_encode($j)."'>".utf8_encode($j) ."</option>\"+\n";
+                            $j++;
+                        }
+                    echo "\" </select>\"";?>
+ 
+    }
+    if (tabela == "tabela_faltas_mandante"){
+    totals_3++;    
+    var novaLinha = tbl.insertRow(-1);
+    var novaCelula;
+ 
+    if(totals_3%2==0) cl = "#F5E9EC";
+    else cl = "#FBF6F7";
+    
+    novaCelula = novaLinha.insertCell(0);
+    novaCelula.style.backgroundColor = cl
+    novaCelula.innerHTML = <? echo "\"<select name='\"+tabela+totals_3+\"_jogador_id'>\"+\n";
+    $i = 0;
+    while ($i < count($jogadores_mandante)) {
+        echo "\"<option value='".utf8_encode($jogadores_mandante[$i]['id'])."'>".utf8_encode($jogadores_mandante[$i]['nome'])."</option>\"+\n";
+        $i++;
+        }
+    echo "\"</select>\";";?>
+ 
+    novaCelula = novaLinha.insertCell(1);
+    novaCelula.align = "left";
+    novaCelula.style.backgroundColor = cl;
+    novaCelula.innerHTML = <?echo "\"<select name='\"+tabela+totals_3+\"_tempo_id'>\"+";
+                        $j = 0;
+                        while ($j < 90) {
+                            echo "\"<option value='". utf8_encode($j)."'>".utf8_encode($j) ."</option>\"+\n";
+                            $j++;
+                        }
+                    echo "\" </select>\"";?>
+ 
+    }
+    if (tabela == "tabela_faltas_visitante"){
+    totals_4++;    
+    var novaLinha = tbl.insertRow(-1);
+    var novaCelula;
+ 
+    if(totals_4%2==0) cl = "#F5E9EC";
+    else cl = "#FBF6F7";
+    
+    novaCelula = novaLinha.insertCell(0);
+    novaCelula.style.backgroundColor = cl
+    novaCelula.innerHTML = <? echo "\"<select name='\"+tabela+totals_4+\"_jogador_id'>\"+\n";
+    $i = 0;
+    while ($i < count($jogadores_mandante)) {
+        echo "\"<option value='".utf8_encode($jogadores_visitante[$i]['id'])."'>".utf8_encode($jogadores_visitante[$i]['nome'])."</option>\"+\n";
+        $i++;
+        }
+    echo "\"</select>\";";?>
+ 
+    novaCelula = novaLinha.insertCell(1);
+    novaCelula.align = "left";
+    novaCelula.style.backgroundColor = cl;
+    novaCelula.innerHTML = <?echo "\"<select name='\"+tabela+totals_4+\"_tempo_id'>\"+";
+                        $j = 0;
+                        while ($j < 90) {
+                            echo "\"<option value='". utf8_encode($j)."'>".utf8_encode($j) ."</option>\"+\n";
+                            $j++;
+                        }
+                    echo "\" </select>\"";?>
+ 
+    }
+    
+    if (tabela == "tabela_cartoes_mandante"){
+    totals_4++;    
+    var novaLinha = tbl.insertRow(-1);
+    var novaCelula;
+ 
+    if(totals_4%2==0) cl = "#F5E9EC";
+    else cl = "#FBF6F7";
+    
+    novaCelula = novaLinha.insertCell(0);
+    novaCelula.style.backgroundColor = cl
+    novaCelula.innerHTML = <? echo "\"<select name='\"+tabela+totals_4+\"_jogador_id'>\"+\n";
+    $i = 0;
+    while ($i < count($jogadores_mandante)) {
+        echo "\"<option value='".utf8_encode($jogadores_mandante[$i]['id'])."'>".utf8_encode($jogadores_mandante[$i]['nome'])."</option>\"+\n";
+        $i++;
+        }
+    echo "\"</select>\";";?>
+ 
+    novaCelula = novaLinha.insertCell(1);
+    novaCelula.align = "left";
+    novaCelula.style.backgroundColor = cl;
+    novaCelula.innerHTML = <?echo "\"<select name='\"+tabela+totals_4+\"_tempo_id'>\"+";
+                        $j = 0;
+                        while ($j < 90) {
+                            echo "\"<option value='". utf8_encode($j)."'>".utf8_encode($j) ."</option>\"+\n";
+                            $j++;
+                        }
+                    echo "\" </select>\"";?>
+ 
+    }
+    if (tabela == "tabela_cartoes_visitante"){
+    totals_5++;    
+    var novaLinha = tbl.insertRow(-1);
+    var novaCelula;
+ 
+    if(totals_5%2==0) cl = "#F5E9EC";
+    else cl = "#FBF6F7";
+    
+    novaCelula = novaLinha.insertCell(0);
+    novaCelula.style.backgroundColor = cl
+    novaCelula.innerHTML = <? echo "\"<select name='\"+tabela+totals_5+\"_jogador_id'>\"+\n";
+    $i = 0;
+    while ($i < count($jogadores_mandante)) {
+        echo "\"<option value='".utf8_encode($jogadores_visitante[$i]['id'])."'>".utf8_encode($jogadores_visitante[$i]['nome'])."</option>\"+\n";
+        $i++;
+        }
+    echo "\"</select>\";";?>
+ 
+    novaCelula = novaLinha.insertCell(1);
+    novaCelula.align = "left";
+    novaCelula.style.backgroundColor = cl;
+    novaCelula.innerHTML = <?echo "\"<select name='\"+tabela+totals_5+\"_tempo_id'>\"+";
+                        $j = 0;
+                        while ($j < 90) {
+                            echo "\"<option value='". utf8_encode($j)."'>".utf8_encode($j) ."</option>\"+\n";
+                            $j++;
+                        }
+                    echo "\" </select>\"";?>
+ 
+    }
+}
+</script>
 
-    <table>
-        <tr>
-            <td>Mandante:</td>
-            <td>    
-                <select name="mandante"  id="select_mandante" disabled="true">
-                    <?
-                    $i = 0;
-                    while ($i < count($table)) {
-                        if ($i == $mandante_id) {
-                            echo "<option value='" . utf8_encode($table[$i]['id']) . "'selected='selected'>" . utf8_encode($table[$i]['nome'] . "-" . $table[$i]['estado']) . "</option>\n  ";
-                        } else {
-                            echo "<option value=\"" . utf8_encode($table[$i]['id']) . "\">" . utf8_encode($table[$i]['nome'] . "-" . $table[$i]['estado']) . "</option>\n  ";
-                        }
-                        $i++;
-                    }
-                    ?>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>Gols:</td>
-            <td><input type="text" name="gols_mandante" id="gols_mandante" size="10" maxlength="10" value="0"></td>
-        </tr>
-        <tr>
-            <td>Gols Contra: </td>
-            <td><input type="text" name="gols_contra_mandante" id="gols_contra_mandante" size="10" maxlength="10" value="0"></td>
-        </tr>
-        <tr>
-            <td>Cartoes (vermelhos/amarelos): </td>
-            <td><input type="text" name="cartoes_mandante" id="cartoes_mandante" size="10" maxlength="10" value="0"></td>
-        </tr>
-        <tr>
-            <td>Faltas: </td>
-            <td><input type="text" name="faltas_mandante" id="faltas_mandante" size="10" maxlength="10" value="0"></td>
-        </tr>        
-        <tr>	
-            <td>Visitante:</td>
-            <td>
-                <select name="visitante" disabled="true">
-                    <?
-                    $i = 0;
-                    while ($i < count($table)) {
-                        if ($i == $visitante_id) {
-                            echo "<option value='" . utf8_encode($table[$i]['id']) . "'selected='selected'>" . utf8_encode($table[$i]['nome'] . "-" . $table[$i]['estado']) . "</option>\n  ";
-                        } else {
-                            echo "<option value=\"" . utf8_encode($table[$i]['id']) . "\">" . utf8_encode($table[$i]['nome'] . "-" . $table[$i]['estado']) . "</option>\n  ";
-                        }
-                        $i++;
-                    }
-                    ?>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>Gols:</td>
-            <td><input type="text" name="gols_visitante" id="gols_visitante" size="10" maxlength="10" value="0"></td>
-        </tr>
-        <tr>
-            <td>Gols Contra: </td>
-            <td><input type="text" name="gols_contra_visitante" id="gols_contra_visitante" size="10" maxlength="10" value="0"></td>
-        </tr>
-        <tr>
-            <td>Cartoes (vermelhos/amarelos): </td>
-            <td><input type="text" name="cartoes_visitante" id="cartoes_visitante" size="10" maxlength="10" value="0"></td>
-        </tr>
-        <tr>
-            <td>Faltas: </td>
-            <td><input type="text" name="faltas_visitante" id="faltas_visitante" size="10" maxlength="10" value="0"></td>
-        </tr>       
-        <tr>
-            <td>Estádio:</td>
-            <td>
-                <select name="estadio" disabled="true">
-                    <?
-                    $i = 0;
-                    while ($i < count($estadio)) {
-                        if ($i == $estadio_id) {
-                            echo "<option value='" . utf8_encode($estadio[$i]['id']) . "'selected='selected'>" . utf8_encode($estadio[$i]['nome']) . "</option>\n";
-                        } else {
-                            echo "<option value=\"" . utf8_encode($estadio[$i]['id']) . "\">" . utf8_encode($estadio[$i]['nome']) . "</option>\n  ";
-                        }
-                        $i++;
-                    }
-                    ?>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>Data (dd/mm/aaaa): </td>
-            <td><input type="text" disabled="true" name="data" id="data_2" size="10" maxlength="10" value="<? echo utf8_encode($data); ?>"></td>
-        </tr>
-        <tr>
-            <td>Hora (hh:mm):</td>
-            <td><input type="text" disabled="true" id="hora" size="5" maxlength="5" value="<? echo utf8_encode($hora); ?>"></td>
-        </tr>
-        <tr>
-            <td>Rodada:</td>
-            <td><input type="text"  disabled="true" name="rodada" id="rodada" size="5" maxlength="5" value="<? echo utf8_encode($rodada); ?>"></td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td><input type="submit" name="Submit" value="Alterar"></td>
-        </tr> 
-    </table>
-    <input type="hidden" name="id" value="<? echo $id; ?>"></input>
-    <input type="hidden" name="mandante_id" value="<? echo $mandante_id; ?>"></input>    
-    <input type="hidden" name="visitante_id" value="<? echo $visitante_id; ?>"></input> 
+
+<form name="form_alterar" method="POST" action="?acao=executa_alterar_detalhes_partida">
+    <input type="hidden" name="id" value="<?echo $id;?>">
+    <div>
+        <table id='tabela_gols_mandante' border='0' width=49%'>
+        </table>
+        <br />
+        <input type='button' id='incluir' value='incluir novo gol mandante' onclick='adiciona("tabela_gols_mandante")'/>
+    </div>
+    <div>
+        <table id='tabela_gols_visitante' border='0' width='49%'>
+        </table>
+        <br />
+        <input type='button' id='incluir' value='incluir novo gol visitante' onclick='adiciona("tabela_gols_visitante")'/>
+    </div>
+    <div>
+        <table id='tabela_faltas_mandante' border='0' width='49%'>
+        </table>
+        <br />
+        <input type='button' id='incluir' value='incluir nova falta mandante' onclick='adiciona("tabela_faltas_mandante")'/>
+    </div>
+
+    <div>
+        <table id='tabela_faltas_visitante' border='0' width='49%'>
+        </table>
+        <br />
+        <input type='button' id='incluir' value='incluir nova falta visitante' onclick='adiciona("tabela_faltas_visitante")'/>
+    </div>
+    
+      <div>
+        <table id='tabela_cartoes_mandante' border='0' width='49%'>
+        </table>
+        <br />
+        <input type='button' id='incluir' value='incluir novo cartão mandante' onclick='adiciona("tabela_cartoes_mandante")'/>
+    </div>
+    
+        <div>
+        <table id='tabela_cartoes_visitante' border='0' width='49%'>
+        </table>
+        <br />
+        <input type='button' id='incluir' value='incluir novo cartão visitante' onclick='adiciona("tabela_cartoes_visitante")'/>
+    </div>
+
+    <p align="right">
+        <input type="submit" name="Submit" value="Alterar">
 </form>
 
