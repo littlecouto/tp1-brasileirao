@@ -36,13 +36,13 @@ if (mysql_num_rows($qry) > 0) {
     die();
 }
 ?>
-<form name="form_alterar" method="POST" action="?acao=executa_alterar_partida">
+<form name="form_alterar" method="POST" action="?acao=especificar_detalhes_partida">
 
     <table>
         <tr>
             <td>Mandante:</td>
             <td>    
-                <select name="mandante"  id="select_mandante">
+                <select name="mandante"  id="select_mandante" disabled="true">
                     <?
                     $i = 0;
                     while ($i < count($table)) {
@@ -56,11 +56,27 @@ if (mysql_num_rows($qry) > 0) {
                     ?>
                 </select>
             </td>
-        </tr>       
+        </tr>
+        <tr>
+            <td>Gols:</td>
+            <td><input type="text" name="gols_mandante" id="gols_mandante" size="10" maxlength="10" value="0"></td>
+        </tr>
+        <tr>
+            <td>Gols Contra: </td>
+            <td><input type="text" name="gols_contra_mandante" id="gols_contra_mandante" size="10" maxlength="10" value="0"></td>
+        </tr>
+        <tr>
+            <td>Cartoes (vermelhos/amarelos): </td>
+            <td><input type="text" name="cartoes_mandante" id="cartoes_mandante" size="10" maxlength="10" value="0"></td>
+        </tr>
+        <tr>
+            <td>Faltas: </td>
+            <td><input type="text" name="faltas_mandante" id="faltas_mandante" size="10" maxlength="10" value="0"></td>
+        </tr>        
         <tr>	
             <td>Visitante:</td>
             <td>
-                <select name="visitante">
+                <select name="visitante" disabled="true">
                     <?
                     $i = 0;
                     while ($i < count($table)) {
@@ -74,11 +90,27 @@ if (mysql_num_rows($qry) > 0) {
                     ?>
                 </select>
             </td>
-        </tr>     
+        </tr>
+        <tr>
+            <td>Gols:</td>
+            <td><input type="text" name="gols_visitante" id="gols_visitante" size="10" maxlength="10" value="0"></td>
+        </tr>
+        <tr>
+            <td>Gols Contra: </td>
+            <td><input type="text" name="gols_contra_visitante" id="gols_contra_visitante" size="10" maxlength="10" value="0"></td>
+        </tr>
+        <tr>
+            <td>Cartoes (vermelhos/amarelos): </td>
+            <td><input type="text" name="cartoes_visitante" id="cartoes_visitante" size="10" maxlength="10" value="0"></td>
+        </tr>
+        <tr>
+            <td>Faltas: </td>
+            <td><input type="text" name="faltas_visitante" id="faltas_visitante" size="10" maxlength="10" value="0"></td>
+        </tr>       
         <tr>
             <td>Estádio:</td>
             <td>
-                <select name="estadio">
+                <select name="estadio" disabled="true">
                     <?
                     $i = 0;
                     while ($i < count($estadio)) {
@@ -95,22 +127,23 @@ if (mysql_num_rows($qry) > 0) {
         </tr>
         <tr>
             <td>Data (dd/mm/aaaa): </td>
-            <td><input type="text" name="data" id="data_2" size="10" maxlength="10" value="<? echo utf8_encode($data); ?>"></td>
+            <td><input type="text" disabled="true" name="data" id="data_2" size="10" maxlength="10" value="<? echo utf8_encode($data); ?>"></td>
         </tr>
         <tr>
             <td>Hora (hh:mm):</td>
-            <td><input type="text" name="hora" id="hora" size="5" maxlength="5" value="<? echo utf8_encode($hora); ?>"></td>
+            <td><input type="text" disabled="true" id="hora" size="5" maxlength="5" value="<? echo utf8_encode($hora); ?>"></td>
         </tr>
         <tr>
             <td>Rodada:</td>
-            <td><input type="text" name="rodada" id="rodada" size="5" maxlength="5" value="<? echo utf8_encode($rodada); ?>"></td>
+            <td><input type="text"  disabled="true" name="rodada" id="rodada" size="5" maxlength="5" value="<? echo utf8_encode($rodada); ?>"></td>
         </tr>
         <tr>
             <td>&nbsp;</td>
             <td><input type="submit" name="Submit" value="Alterar"></td>
         </tr> 
     </table>
-    <input type="hidden" name="id" value="<? echo $id; ?>">
-
+    <input type="hidden" name="id" value="<? echo $id; ?>"></input>
+    <input type="hidden" name="mandante_id" value="<? echo $mandante_id; ?>"></input>    
+    <input type="hidden" name="visitante_id" value="<? echo $visitante_id; ?>"></input> 
 </form>
 

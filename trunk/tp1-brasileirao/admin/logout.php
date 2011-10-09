@@ -5,5 +5,5 @@ session_start();
 unset($_SESSION[iduser]);
 unset($_SESSION[nomeuser]);
 //REDIRECIONAMOS PARA PÁGINA DE LOGIN
-Header("Location:../index.php");
+Header("Location: index.php");
 ?>

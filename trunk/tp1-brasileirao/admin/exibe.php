@@ -8,10 +8,7 @@
         <link rel="stylesheet" type="text/css" href="../css/text.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="../css/layout.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="../css/nav.css" media="screen" />
-        <link href="../style/jquery.click-calendario-1.0.css" rel="stylesheet" type="text/css"/>
         <script type="text/javascript" src="../js/jquery.js"></script>
-        <script type="text/javascript" src="../js/jquery.click-calendario-1.0-min.js"></script>		
-        <script type="text/javascript" src="../js/exemplo-calendario.js"></script>
         <script src="../js/functions.js" type="text/javascript" language="javascript"></script>	  
         <script src="../jquery/jquery-1.4.1.min.js" language="javascript"></script>
         <script language="javascript">
@@ -34,40 +31,6 @@
              */
 
         </script>
-            <script LANGUAGE="JavaScript">
-    totals =0;
-    function adiciona(){
-    totals++
-        tbl = document.getElementById("tabela")
- 
-        var novaLinha = tbl.insertRow(-1);
-        var novaCelula;
- 
-        if(totals%2==0) cl = "#F5E9EC";
-        else cl = "#FBF6F7";
- 
-        novaCelula = novaLinha.insertCell(0);
- 
-        novaCelula.style.backgroundColor = cl
- 
-        novaCelula.innerHTML = "<input type='checkbox' name='chkt' />";
- 
-        novaCelula = novaLinha.insertCell(1);
-        novaCelula.align = "left";
-        novaCelula.style.backgroundColor = cl;
-        novaCelula.innerHTML = "&nbsp; Linha"+totals+"";
- 
-        novaCelula = novaLinha.insertCell(2);
-        novaCelula.align = "left";
-        novaCelula.style.backgroundColor = cl;
-        novaCelula.innerHTML = "&nbsp;ops3";
- 
-        novaCelula = novaLinha.insertCell(3);
-        novaCelula.align = "left";
-        novaCelula.style.backgroundColor =cl;
-        novaCelula.innerHTML = "&nbsp;ops4";
-    }
-    </script>
     </head>
 
     <body>
@@ -79,19 +42,7 @@
 
 
             <div class="main_menu">
-                <ul class="nav">
-                    <li><a href="?acao=incluir_time">I Time</a></li>
-                    <li><a href="?acao=listar_times">L Times</a></li>
-                    <li><a href="?acao=incluir_jogador">I Jogador</a></li>
-                    <li><a href="?acao=listar_jogadores">L Jogadores</a></li>
-                    <li><a href="?acao=incluir_tecnico">I Técnico</a></li>
-                    <li><a href="?acao=listar_tecnicos">L Técnicos</a></li>
-                    <li><a href="?acao=incluir_partida">I Partida</a></li>
-                    <li><a href="?acao=listar_partidas">L Partidas</a></li>
-                    <li><a href="?acao=incluir_estadio">I Estádio</a></li>
-                    <li><a href="?acao=listar_estadios">L Estádios</a></li>         
-                    <li><a href="?acao=logout">Logout</a></li>
-                </ul>
+               <?include "opcoes_admin.php";?>
             </div><!--End Main Menu-->
 
             <div id="content">
