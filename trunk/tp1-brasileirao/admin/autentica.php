@@ -11,13 +11,7 @@ $senha     =   $_POST[senha];
 $senha  = md5($senha); 
 //VERIFICAMOS USUÁRIO E SENHA COMPARANDO COM OS DADOS DO BANCO MYSQL
 $sql   =   mysql_query("SELECT ID_USUARIO, NOME_USUARIO FROM tb_usuarios 
-	 WHERE  USUARIO  =  '$usuario' AND SENHA    =  '$senha'");
-
-if (! $sql) {
-    echo mysql_error();
-    die("ERRO NO COMANDO SQL");
-    
-    }
+	 WHERE  USUARIO  =  '$usuario' AND SENHA    =  '$senha'") or die(mysql_error());
  
 //VERIFICAMOS AS LINHAS AFETADAS PELA CONSULTA
 $row   =  mysql_num_rows($sql);

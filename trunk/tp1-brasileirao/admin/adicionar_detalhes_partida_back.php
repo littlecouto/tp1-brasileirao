@@ -52,7 +52,7 @@ function adiciona(tabela){
     if (tabela=="tabela_gols_mandante"){
     novaCelula = novaLinha.insertCell(0);
     novaCelula.style.backgroundColor = cl
-    novaCelula.innerHTML = <? echo "\"<select name='$gol_mandante_jogador_id'>\"+\n";
+    novaCelula.innerHTML = <? echo "\"<select name='gol_mandante_jogador_id'>\"+\n";
     $i = 0;
     while ($i < count($jogadores_mandante)) {
         echo "\"<option value='".utf8_encode($jogadores_mandante[$i]['id'])."'>".utf8_encode($jogadores_visitante[$i]['nome'])."</option>\"+\n";
@@ -63,24 +63,14 @@ function adiciona(tabela){
     novaCelula = novaLinha.insertCell(1);
     novaCelula.align = "left";
     novaCelula.style.backgroundColor = cl;
-    novaCelula.innerHTML = <?echo "\"<select name='$gol_mandante_tempo'>\"";
+    novaCelula.innerHTML = <?echo "\"<select name='gol_mandante_tempo'>\"+";
                         $j = 0;
                         while ($j < 90) {
-                            echo "<option value=\"" . utf8_encode($j) . "\">" . utf8_encode($j) . "</option>\n";
+                            echo "\"<option value='". utf8_encode($j)."'>".utf8_encode($j) ."</option>\"+\n";
                             $j++;
                         }
-                        ?>
-                    </select>
+                    echo "\" </select>\"";?>
  
-    novaCelula = novaLinha.insertCell(2);
-    novaCelula.align = "left";
-    novaCelula.style.backgroundColor = cl;
-    novaCelula.innerHTML = "&nbsp;ops3";
- 
-    novaCelula = novaLinha.insertCell(3);
-    novaCelula.align = "left";
-    novaCelula.style.backgroundColor =cl;
-    novaCelula.innerHTML = "&nbsp;ops4";
     }
 }
 </script>
