@@ -52,6 +52,7 @@ a:hover {
   float:left;
   margin:10px 10px 10px 9px;
   padding:10px;
+  max-width: 50%;
 }
 
 .box {
@@ -60,6 +61,7 @@ a:hover {
   margin:10px 10px 10px 9px;
   padding:10px;
   border-left:1px dashed #909774;
+  max-width: 50%;
 }
 
 /*Content config
@@ -73,8 +75,8 @@ div#content {
 
 #content h5 {
   color:#554400;
-  width:205px;
-  padding: 0 0 5px 0;
+  width:auto;
+  padding: 10px 0 5px 0;
   margin: 0 0 10px 0;
   border-bottom: 1px solid #909774;
 }
@@ -161,20 +163,32 @@ img .visitante {
 /*Table
 -------------------------------------------------*/
 table {
-  border:none;
+  margin:0px;
 }
 
-table tr {
-  border-bottom: 1px solid #ff6600;
+table tr td{
+    background: #f6f6f6;
+    border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
 }
 
-table > tr:first-child {
-  background: #f9f9f9;
-  border-bottom: 1px dashed #ccc;
-  border-top: 2px solid #554400;
+table tr#primeira td{
+  color:#ff6600;
+  background: #22280b;
+  border: 2px solid #22280b;
+  padding: 5px;
+    border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
 }
 
-table > tr:last-child {
+table td:first-child {
+  text-align: center;
+  
+}
+
+table tr:ultima {
   border-bottom: 2px dashed #554400 ;
 }
 /*Bottom

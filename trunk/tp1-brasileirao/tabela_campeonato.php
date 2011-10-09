@@ -27,11 +27,16 @@ $qry = mysql_query($sql) or die(mysql_error());
 
 if (mysql_num_rows($qry)>0) {
 	?>
-<center>
-	<table cellpadding="1" cellspacing="1">
+<div class="box_first">
+    <h5>TP1 - BD - UFSJ</h5>
+    <p>Este sistema de informação intitulado "Bola na Rede" é parte integrante do trabalho da disciplina de banco de dados do curso de ciência da computação da Universidade Federal de São João del-Rei, ministrada pelo professor Leonardo Rocha.</p>
+</div>
+<div class="box">
+<h5>Tabela Atual do Campeonato Brasileiro</h5>
+	<table>
                 <thead>
-                <tr>
-                    <td>Classificacao</td>
+                <tr id="primeira">
+                    <td>Classificação</td>
                     <td>Nome</td>
                     <td>P</td>
                     <td>J</td>
@@ -62,18 +67,18 @@ if (mysql_num_rows($qry)>0) {
                         if($i%2) $cor = "#ffffff";       
                         else $cor = "#f1f1f1";
 			?>
-			<tr bgcolor="<?=$cor?>">
+			<tr>
                                 <td><? echo $i; ?></td>
 				<td><? echo utf8_encode($nome); ?></td>
-				<td><? echo $P;?></td>
-				<td><? echo $J; ?></td>
-				<td><? echo $V; ?></td>
-				<td><? echo $E; ?></td>
-                                <td><? echo $D; ?></td>
-				<td><? echo $GP; ?></td>
-				<td><? echo $GC; ?></td>
-				<td><? echo $SG; ?></td>
-				<td><? echo $aprv; ?></td>
+				<td align="center"><? echo $P;?></td>
+				<td align="center"><? echo $J; ?></td>
+				<td align="center"><? echo $V; ?></td>
+				<td align="center"><? echo $E; ?></td>
+                                <td align="center"><? echo $D; ?></td>
+				<td align="center"><? echo $GP; ?></td>
+				<td align="center"><? echo $GC; ?></td>
+				<td align="center"><? echo $SG; ?></td>
+				<td align="center"><? echo $aprv; ?></td>
                                 </td>
 			</tr>
 			<?
@@ -83,8 +88,8 @@ if (mysql_num_rows($qry)>0) {
                 <tbody>
                <tfoot>
                </tfoot>    
-	</table>
- </center>   
+	</table>  
+</div>
 	<?
 }else{
 	echo "Listagem cancelada (Tabela vazia).";
