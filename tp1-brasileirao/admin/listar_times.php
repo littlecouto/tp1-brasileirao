@@ -15,8 +15,7 @@ if (mysql_num_rows($qry)>0) {
 			$estado    = $R->estado;
 			$gols_pro  = $R->gols_pro; 
 			$gols_contra = $R->gols_contra;
-			$total_faltas = $R->total_faltas;
-			$estadio_id = $R->estadio_id; 
+			$total_faltas = $R->total_faltas; 
                         if($i%2) $cor = "#ffffff";       
                         else $cor = "#f1f1f1";
 			?>
@@ -27,7 +26,6 @@ if (mysql_num_rows($qry)>0) {
 				<td><? echo $gols_pro; ?></td>
 				<td><? echo $gols_contra; ?></td>
 				<td><? echo $total_faltas; ?></td>
-				<td><? echo $estadio_id; ?></td>
 				<td align="center" width="10%">
 					[ <a href="?acao=alterar_time&id=<?=$id;?>">A</a> ]
 					[ <a href="?acao=excluir_time&id=<?=$id;?>">X</a> ]
