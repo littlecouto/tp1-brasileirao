@@ -1,45 +1,30 @@
+
 <?
-$rodada = $_GET["rodada"];
+//print_r($_GET);
+$rodada = $_REQUEST["rodada"];
+$simulate = $_GET["simulate"];
+
 if (!$rodada) {
     $rodada = 1;
 }
 include "admin/conecta.php";
-$sql = "drop table if exists `tp1_bd`.`partida_tmp`";
-$qry = mysql_query($sql) or die(mysql_error());
+include "cria_estrutura.php";
 
-$sql = "CREATE TABLE  `tp1_bd`.`partida_tmp` (
-  `id` int(10) unsigned NOT NULL,
-  `mandante_id` int(10) unsigned NOT NULL,
-  `visitante_id` int(10) unsigned NOT NULL,
-  `estadio_id` int(10) unsigned NOT NULL,
-  `data` datetime NOT NULL,
-  `rodada` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MEMORY DEFAULT CHARSET=utf8 select * from partida";
-$qry = mysql_query($sql) or die(mysql_error());
+if(!$simulate) {echo "kkkkkk";criar_tabelas();}
+else{
+    echo "kkkkhhhhhkk";
+    $num = $_GET["num"];
+    for($i=0;$i<$num;$i++){
+        $mandante_gols = $_GET["mandante_gols".$i];
+        $visitante_gols = $_GET["visitante_gols".$i];
+        echo $mandante_gols;
+        echo $visitante_gols;
+}
+}
 
-$sql = "drop table if exists `tp1_bd`.`time_tmp`";
-$qry = mysql_query($sql) or die(mysql_error());
-
-$sql = "CREATE TABLE  `tp1_bd`.`time_tmp` (
-    `id` int(10) unsigned NOT NULL,
-  `nome` varchar(80) NOT NULL,
-  `sigla` varchar(3) NOT NULL,
-  `estado` varchar(80) NOT NULL,
-  `brasao` varchar(255) NOT NULL,
-  `gols_pro` int(10) unsigned NOT NULL DEFAULT '0',
-  `gols_contra` int(10) unsigned NOT NULL DEFAULT '0',
-  `total_faltas` int(10) unsigned NOT NULL DEFAULT '0',
-  `tecnico_id` int(10) unsigned NOT NULL DEFAULT '1',
-  `vitorias` int(10) unsigned NOT NULL DEFAULT '0',
-  `derrotas` int(10) unsigned NOT NULL DEFAULT '0',
-  `empates` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MEMORY DEFAULT CHARSET=utf8 select * from time";
-$qry = mysql_query($sql) or die(mysql_error());
 
 $sql = "SELECT 
-        partida.id,
+        partida_tmp.id,
         rodada,
         mandante_gols,
         visitante_gols,
@@ -51,7 +36,7 @@ $sql = "SELECT
         time2.brasao as visitante_brasao,
         DATE_FORMAT(data,'%d/%m/%Y %H:%i:%s')as data_formatada,
         IF(data < CURDATE(),'passada','') as passou 
-        FROM partida inner join time as time1 inner join time as time2 where time1.id=partida.mandante_id and time2.id=partida.visitante_id
+        FROM partida_tmp inner join time_tmp as time1 inner join time_tmp as time2 where time1.id=partida_tmp.mandante_id and time2.id=partida_tmp.visitante_id
         ORDER by data";
 $rs = mysql_query($sql) or die(mysql_error());
 $table = array();
@@ -59,6 +44,20 @@ while ($row = mysql_fetch_array($rs)) {
     if(!$table[$row['rodada']]) $table[$row['rodada']] = array();
     array_push($table[$row['rodada']],$row);
 }
+
+$sql = "SELECT concat(nome,'-',estado) as nome,
+        vitorias*3+empates as P,
+        vitorias+derrotas+empates as J,
+        vitorias as V,
+        empates as E,
+        derrotas as D,
+        gols_pro as GP,
+        gols_contra as GC,
+        gols_pro-gols_contra as SG,
+        IF((vitorias+empates+derrotas),(vitorias*3+empates)/((vitorias+empates+derrotas)*3)*100,0) as aprv FROM time_tmp
+        order by (vitorias*3+empates) desc";
+$qry = mysql_query($sql) or die(mysql_error());
+
 ?>
 <div class="box_first">
     <h5>Escolha uma Rodada</h5>
@@ -66,17 +65,17 @@ while ($row = mysql_fetch_array($rs)) {
         <?
         $i=1;
         while($i < count($table)){
-           echo " <div class='rodada'><a href='?acao=simulador&rodada=".utf8_encode($table[$i]['1']['rodada'])."' class='".utf8_encode($table[$i]['1']['passou'])."'>".
+           echo " <div class='rodada'><a href='javascript:submitform()' class='".utf8_encode($table[$i]['1']['passou'])."'>".
                    utf8_encode(str_pad($table[$i]['1']['rodada'],2,'0', STR_PAD_LEFT))."</a></div>\n";
-           $i++;
+            $i++;
         }
         ?>
     </div><!--End rodadas-->
 </div><!--End box_first-->
 
 <div class="box">
-    <div class="partida">
-        <form name="placar">
+    <div class="partida" >
+        <form name="placar" id="placar" method="GET" action="?acao=simulador&simulate=true">
         <?
         $i=0;
         while($i < count($table[$rodada])){
@@ -92,9 +91,9 @@ while ($row = mysql_fetch_array($rs)) {
             $data = utf8_encode($partidas_por_rodada[$rodada][$i]['data_formatada']);
             
             echo "<img src='".$brasao_mandante."' title='".$mandante_nome."' alt='".$mandante_nome."' class='mandante'/>";
-            echo "<input type='text' name='mandante' id='mandante' value=".$gols_mandante.">";
+            echo "<input type='text' name='mandante_gols".$i."' id='mandante' value=".$gols_mandante.">";
             echo "<img src='img/versus.png' class='versus'/>";
-            echo "<input type='text' name='visitante' id='visitante' value=".$gols_mandante.">";
+            echo "<input type='text' name='visitante_gols".$i."' id='visitante' value=".$gols_mandante.">";
             echo "<img src='".$brasao_visitante."' title='".$visitante_nome."' alt='".$visitante_nome."' class='mandante'/>";
             echo "<div class='info'>";
             echo "<p class='label'>".$data."</p>";
@@ -102,7 +101,72 @@ while ($row = mysql_fetch_array($rs)) {
             echo "</div>";
             $i++;
         }
-        ?>        
+        ?>
+        <input type="submit" class="botao" id="botao" name="submit" value="Simular">     
+        <input type='hidden' name='num' id='num' value=<?=count($table[$rodada])?>> 
+        <input type='hidden' name='acao' id='acao' value='simulador'> 
+        <input type='hidden' name='rodada' id='rodada' value=<?=$rodada?>>         
+        <input type='hidden' name='simulate' id='simulate' value='0'> 
         </form>            
     </div>
+</div>
+
+<div class="box">
+<h5>Tabela</h5>
+	<table>
+                <thead>
+                <tr id="primeira">
+                    <td>Classificação</td>
+                    <td>Nome</td>
+                    <td>P</td>
+                    <td>J</td>
+                    <td>V</td>
+                    <td>E</td>
+                    <td>D</td>
+                    <td>GP</td>
+                    <td>GC</td>
+                    <td>SG</td>
+                    <td>%</td>
+                </tr>
+                </thead>
+                <tbody>
+		<?
+                $i=1;
+		while ($R=mysql_fetch_object($qry)) { 
+			$nome      = $R->nome;
+			$P    = $R->P;
+			$J    = $R->J;
+			$V  = $R->V; 
+			$E = $R->E;
+			$D = $R->D;
+			$GP = $R->GP;
+                        $GC = $R->GC; 
+			$SG = $R->SG; 
+			$aprv = $R->aprv; 
+
+                        if($i%2) $cor = "#ffffff";       
+                        else $cor = "#f1f1f1";
+			?>
+			<tr>
+                                <td><? echo $i; ?></td>
+				<td><? echo utf8_encode($nome); ?></td>
+				<td align="center"><? echo $P;?></td>
+				<td align="center"><? echo $J; ?></td>
+				<td align="center"><? echo $V; ?></td>
+				<td align="center"><? echo $E; ?></td>
+                                <td align="center"><? echo $D; ?></td>
+				<td align="center"><? echo $GP; ?></td>
+				<td align="center"><? echo $GC; ?></td>
+				<td align="center"><? echo $SG; ?></td>
+				<td align="center"><? echo $aprv; ?></td>
+                                </td>
+			</tr>
+			<?
+			$i++;
+		}
+		?>
+                <tbody>
+               <tfoot>
+               </tfoot>    
+	</table>  
 </div>
