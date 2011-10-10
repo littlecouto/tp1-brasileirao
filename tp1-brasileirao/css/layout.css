@@ -52,7 +52,7 @@ a:hover {
   float:left;
   margin:10px 10px 10px 9px;
   padding:10px;
-  max-width: 30%;
+  max-width: 32%;
 }
 
 .box {
@@ -61,7 +61,7 @@ a:hover {
   margin:10px 10px 10px 9px;
   padding:10px;
   border-left:1px dashed #909774;
-  max-width: 30%;
+  max-width: 32%;
 }
 
 /*Content config
@@ -73,9 +73,10 @@ div#content {
   min-height: 350px;
 }
 
-#content h5 {
+#content .box h5,
+#content .box_first h5 {
   color:#554400;
-  width:auto;
+  width:100%;
   padding: 10px 0 5px 0;
   margin: 0 0 10px 0;
   border-bottom: 1px solid #909774;
@@ -126,6 +127,7 @@ div#content {
 #content .partida {
   position:relative;
   float:left;
+  margin:10px;
 }
 
 .partida input {
@@ -137,6 +139,19 @@ div#content {
   color:#ff6600;
 }
 
+input.botao {
+	margin:10px 0 0 40%;
+	border: 1px solid #22280b;
+	width:auto;
+	height:20px;
+	color:#22280b;
+	background:#ff6600;
+  	border-radius: 5px;
+  -	moz-border-radius: 5px;
+  -	webkit-border-radius: 5px;
+	padding-bottom:2px;
+}
+
 .partida .info {
   position:relative;
   float:right;
@@ -146,13 +161,20 @@ div#content {
 -------------------------------------------------*/
 .partida img {
   position:relative; 
-  width:35px;
-  height:35px;
 }
 
-img .visitante {
+.partida img .mandante {
   position:relative;
   float:right;
+  width:20px;
+  height:20px;
+}
+
+.partida img .visitante {
+  position:relative;
+  float:right;
+  width:20px;
+  height:20px;
 }
 
 .partida p {

@@ -1,12 +1,19 @@
-
+        <script language="javascript">
+            function submitform(rodada)
+            {
+                document.getElementById("rodada").value=rodada;
+                document.placar.submit();
+            }
+        </script>
 <?
 //print_r($_GET);
-$rodada = $_REQUEST["rodada"];
+$rodada = $_GET["rodada"];
 $simulate = $_GET["simulate"];
 
 if (!$rodada) {
     $rodada = 1;
 }
+
 include "admin/conecta.php";
 include "cria_estrutura.php";
 
@@ -65,8 +72,9 @@ $qry = mysql_query($sql) or die(mysql_error());
         <?
         $i=1;
         while($i < count($table)){
-           echo " <div class='rodada'><a href='javascript:submitform()' class='".utf8_encode($table[$i]['1']['passou'])."'>".
-                   utf8_encode(str_pad($table[$i]['1']['rodada'],2,'0', STR_PAD_LEFT))."</a></div>\n";
+           $rod = $table[$i]['1']['rodada']; 
+           echo " <div class='rodada'><a href='javascript:submitform($rod)' class='".utf8_encode($table[$i]['1']['passou'])."'>".
+                   utf8_encode(str_pad($rod,2,'0', STR_PAD_LEFT))."</a></div>\n";
             $i++;
         }
         ?>
@@ -74,12 +82,10 @@ $qry = mysql_query($sql) or die(mysql_error());
 </div><!--End box_first-->
 
 <div class="box">
-    <div class="partida" >
         <form name="placar" id="placar" method="GET" action="?acao=simulador&simulate=true">
         <?
         $i=0;
-        while($i < count($table[$rodada])){
-            
+        while($i < count($table[$rodada])){          
             $brasao_mandante = "img/".utf8_encode($table[$rodada][$i]['mandante_brasao']);
             $brasao_visitante = "img/".utf8_encode($table[$rodada][$i]['visitante_brasao']);
             $mandante_sigla = utf8_encode($table[$rodada][$i]['mandante_sigla']);
@@ -88,27 +94,27 @@ $qry = mysql_query($sql) or die(mysql_error());
             $visitante_nome = utf8_encode($table[$rodada][$i]['visitante_nome']);            
             $gols_mandante = utf8_encode($table[$rodada][$i]['mandante_gols']);
             $gols_visitante = utf8_encode($table[$rodada][$i]['visitante_gols']);
-            $data = utf8_encode($partidas_por_rodada[$rodada][$i]['data_formatada']);
-            
-            echo "<img src='".$brasao_mandante."' title='".$mandante_nome."' alt='".$mandante_nome."' class='mandante'/>";
-            echo "<input type='text' name='mandante_gols".$i."' id='mandante' value=".$gols_mandante.">";
-            echo "<img src='img/versus.png' class='versus'/>";
-            echo "<input type='text' name='visitante_gols".$i."' id='visitante' value=".$gols_mandante.">";
-            echo "<img src='".$brasao_visitante."' title='".$visitante_nome."' alt='".$visitante_nome."' class='mandante'/>";
-            echo "<div class='info'>";
-            echo "<p class='label'>".$data."</p>";
-            echo "<p>";
-            echo "</div>";
+            $data = utf8_encode($table[$rodada][$i]['data_formatada']);
+            echo "<div class='partida' >\n";
+            echo "<img src='".$brasao_mandante."' title='".$mandante_nome."' alt='".$mandante_nome."' class='mandante'/>\n";
+            echo "<input type='text' name='mandante_gols".$i."' id='mandante' value=".$gols_mandante.">\n";
+            echo "<img src='img/versus.png' class='versus'/>\n";
+            echo "<input type='text' name='visitante_gols".$i."' id='visitante' value=".$gols_mandante.">\n";
+            echo "<img src='".$brasao_visitante."' title='".$visitante_nome."' alt='".$visitante_nome."' class='visitante'/>\n";
+            echo "<div class='info'>\n";
+            echo "<p class='label'>".$data."</p>\n";
+            echo "<p>\n";
+            echo "</div>\n";
+            echo "</div>\n";            
             $i++;
         }
         ?>
-        <input type="submit" class="botao" id="botao" name="submit" value="Simular">     
+        <input type="submit" class="botao" id="botao" name="botao_submit" value="Simular">     
         <input type='hidden' name='num' id='num' value=<?=count($table[$rodada])?>> 
         <input type='hidden' name='acao' id='acao' value='simulador'> 
         <input type='hidden' name='rodada' id='rodada' value=<?=$rodada?>>         
         <input type='hidden' name='simulate' id='simulate' value='0'> 
         </form>            
-    </div>
 </div>
 
 <div class="box">

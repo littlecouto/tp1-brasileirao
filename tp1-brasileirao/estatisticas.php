@@ -8,7 +8,7 @@ $equipe_violenta = "SELECT time.nome,count(time.nome) as faltas from falta inner
 $qry = mysql_query($artilharia) or die(mysql_error());
 if (mysql_num_rows($qry) > 0) {
     ?>
-    <div>
+    <div class="box_first">
         <h5>Artilharia</h5>
         <table cellpadding="1" cellspacing="1">
             <?
@@ -34,8 +34,8 @@ if (mysql_num_rows($qry) > 0) {
 $qry = mysql_query($jogador_far_play) or die(mysql_error());
 if (mysql_num_rows($qry) > 0) {
     ?>
-    <div>
-        <h5>Jogador Far Play</h5>
+    <div class="box">
+        <h5>Jogador Fair Play</h5>
         <table cellpadding="1" cellspacing="1">
             <?
             $i = 0;
@@ -60,8 +60,8 @@ if (mysql_num_rows($qry) > 0) {
 $qry = mysql_query($equipe_far_play) or die(mysql_error());
 if (mysql_num_rows($qry) > 0) {
     ?>
-    <div>
-        <h5>Jogador Far Play</h5>
+    <div class="box">
+        <h5>Equipe Fair Play</h5>
         <table cellpadding="1" cellspacing="1">
             <?
             $i = 0;
@@ -87,7 +87,7 @@ if (mysql_num_rows($qry) > 0) {
 $qry = mysql_query($jogador_violento) or die(mysql_error());
 if (mysql_num_rows($qry) > 0) {
     ?>
-    <div>
+    <div class="box">
         <h5>Jogador Mais Violento</h5>
         <table cellpadding="1" cellspacing="1">
             <?
@@ -114,7 +114,7 @@ if (mysql_num_rows($qry) > 0) {
 $qry = mysql_query($equipe_violenta) or die(mysql_error());
 if (mysql_num_rows($qry) > 0) {
     ?>
-    <div>
+    <div class="box">
         <h5>Equipe Mais Violenta</h5>
         <table cellpadding="1" cellspacing="1">
             <?
