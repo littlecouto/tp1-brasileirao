@@ -147,12 +147,12 @@ input.botao {
 	color:#22280b;
 	background:#ff6600;
   	border-radius: 5px;
-  -	moz-border-radius: 5px;
-  -	webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
 	padding-bottom:2px;
 }
 
-.partida .info {
+.info {
   position:relative;
   float:right;
 }
@@ -178,9 +178,17 @@ input.botao {
 }
 
 .partida p {
-  display:inline;
+  /*display:inline;*/
 }
 
+/*.partida_box{
+    border: 1px solid #22280b;
+    position:relative;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;    
+    
+}*/
 
 /*Table
 -------------------------------------------------*/

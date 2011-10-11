@@ -1,15 +1,4 @@
 <?
-$sql1="SELECT concat(nome,'-',estado) as nome,
-    vitorias*3 as P,
-    vitorias+derrotas+empates as J,
-    vitorias as V,
-    empates as E,
-    derrotas as D,
-    gols_pro as GP,
-    gols_contra as GC,
-    gols_pro-gols_contra as SG,
-    (vitorias*3)/((vitorias+empates+derrotas)*3)*100 as '%' FROM time";
-
 include "admin/conecta.php";
 $sql = "SELECT concat(nome,'-',estado) as nome,
         vitorias*3+empates as P,
@@ -21,7 +10,7 @@ $sql = "SELECT concat(nome,'-',estado) as nome,
         gols_contra as GC,
         gols_pro-gols_contra as SG,
         IF((vitorias+empates+derrotas),(vitorias*3+empates)/((vitorias+empates+derrotas)*3)*100,0) as aprv FROM time
-        order by P desc";
+        order by P desc,SG desc,GP desc";
 $qry = mysql_query($sql) or die(mysql_error());
 
 

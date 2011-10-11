@@ -1,8 +1,8 @@
 <?
 include "verifica.php";
 
-//$id = $_GET["id"];
-$id = 10;
+$id = $_GET["id"];
+//$id = 10;
 $sql = "SELECT * FROM partida WHERE id='$id'";
 $qry = mysql_query($sql) or die(mysql_error());
 
